@@ -53,6 +53,11 @@
 #### 布局文件中配置
 
 在xml文件中，配置BottomBarLayout，包裹子条目BottomBarItem
+
+android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束，
+即可大过父布局，父亲以及父亲的父亲都必须申明才可以，
+第二个BottomBarItem的android:layout_gravity="bottom"
+表示当高度超过父布局时，底部对齐，于是就达到上图的效果。
     
    <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
@@ -62,12 +67,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:clipChildren="false">
-<!--
-android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束，
-即可大过父布局，父亲以及父亲的父亲都必须申明才可以，
-第二个BottomBarItem的android:layout_gravity="bottom"
-表示当高度超过父布局时，底部对齐，于是就达到上图的效果。
--->
+    
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
