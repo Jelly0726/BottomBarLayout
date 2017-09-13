@@ -32,11 +32,11 @@ public class BottomBarItem extends LinearLayout {
     private int mMarginTop = 0;//文字和图标的距离,默认0dp
     private boolean mOpenTouchBg = false;// 是否开启触摸背景，默认关闭
     private Drawable mTouchDrawable;//触摸时的背景
-    private boolean mIsHeave = false;// 是否中间凸起项,默认关闭
-    private boolean mOpenHeaveBg = false;// 是否开中间凸起背景，默认关闭
-    private Drawable mHeaveDrawable;//中间凸起的背景
-    private int mHeaveWidth;//中间凸起的宽度
-    private int mHeaveHeight;//中间凸起的高度
+    private boolean mIsHeave = false;// 是否凸起项,默认关闭
+    private boolean mOpenHeaveBg = false;// 是否开启凸起背景，默认关闭
+    private Drawable mHeaveDrawable;//凸起的背景
+    private int mHeaveWidth;//凸起的宽度
+    private int mHeaveHeight;//凸起的高度
     private int mIconWidth;//图标的宽度
     private int mIconHeight;//图标的高度
     private int mItemPadding;//BottomBarItem的padding
@@ -130,7 +130,7 @@ public class BottomBarItem extends LinearLayout {
         }
         mLinearLayout = (LinearLayout) view.findViewById(R.id.mLinearLayout);
         if (mHeaveWidth != 0 && mHeaveHeight != 0 &&mIsHeave){
-            //如果有设置中间凸起的宽度和高度，则设置LinearLayout的宽高
+            //如果有设置凸起的宽度和高度，则设置LinearLayout的宽高
             LayoutParams imageLayoutParams = (LayoutParams) mLinearLayout.getLayoutParams();
             imageLayoutParams.width = mHeaveWidth;
             imageLayoutParams.height = mHeaveHeight;
