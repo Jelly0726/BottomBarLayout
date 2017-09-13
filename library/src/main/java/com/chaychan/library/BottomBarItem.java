@@ -32,11 +32,17 @@ public class BottomBarItem extends LinearLayout {
     private int mMarginTop = 0;//文字和图标的距离,默认0dp
     private boolean mOpenTouchBg = false;// 是否开启触摸背景，默认关闭
     private Drawable mTouchDrawable;//触摸时的背景
+    private boolean mIsHeave = false;// 是否中间凸起项,默认关闭
+    private boolean mOpenHeaveBg = false;// 是否开中间凸起背景，默认关闭
+    private Drawable mHeaveDrawable;//中间凸起的背景
+    private int mHeaveWidth;//中间凸起的宽度
+    private int mHeaveHeight;//中间凸起的高度
     private int mIconWidth;//图标的宽度
     private int mIconHeight;//图标的高度
     private int mItemPadding;//BottomBarItem的padding
 
 
+    private LinearLayout mLinearLayout;
     private ImageView mImageView;
     private TextView mTvUnread;
     private TextView mTvNotify;
@@ -73,8 +79,14 @@ public class BottomBarItem extends LinearLayout {
 
         mMarginTop = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemMarginTop, UIUtils.dip2Px(mContext, mMarginTop));
 
+        mIsHeave = ta.getBoolean(R.styleable.BottomBarItem_isHeave, mIsHeave);
         mOpenTouchBg = ta.getBoolean(R.styleable.BottomBarItem_openTouchBg, mOpenTouchBg);
         mTouchDrawable = ta.getDrawable(R.styleable.BottomBarItem_touchDrawable);
+
+        mOpenHeaveBg = ta.getBoolean(R.styleable.BottomBarItem_openHeaveBg, mOpenHeaveBg);
+        mHeaveDrawable = ta.getDrawable(R.styleable.BottomBarItem_heaveDrawable);
+        mHeaveWidth = ta.getDimensionPixelSize(R.styleable.BottomBarItem_heaveWidth, 0);
+        mHeaveHeight = ta.getDimensionPixelSize(R.styleable.BottomBarItem_heaveHeight, 0);
 
         mIconWidth = ta.getDimensionPixelSize(R.styleable.BottomBarItem_iconWidth, 0);
         mIconHeight = ta.getDimensionPixelSize(R.styleable.BottomBarItem_iconHeight, 0);
@@ -116,6 +128,15 @@ public class BottomBarItem extends LinearLayout {
             //如果有设置item的padding
             view.setPadding(mItemPadding,mItemPadding,mItemPadding,mItemPadding);
         }
+        mLinearLayout = (LinearLayout) view.findViewById(R.id.mLinearLayout);
+        if (mHeaveWidth != 0 && mHeaveHeight != 0 &&mIsHeave){
+            //如果有设置中间凸起的宽度和高度，则设置LinearLayout的宽高
+            LayoutParams imageLayoutParams = (LayoutParams) mLinearLayout.getLayoutParams();
+            imageLayoutParams.width = mHeaveWidth;
+            imageLayoutParams.height = mHeaveHeight;
+            setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);
+            mLinearLayout.setLayoutParams(imageLayoutParams);
+        }
         mImageView = (ImageView) view.findViewById(R.id.iv_icon);
         mTvUnread = (TextView) view.findViewById(R.id.tv_unred_num);
         mTvMsg = (TextView) view.findViewById(R.id.tv_msg);
@@ -145,7 +166,12 @@ public class BottomBarItem extends LinearLayout {
 
         if (mOpenTouchBg){
             //如果有开启触摸背景
-            setBackground(mTouchDrawable);
+            //setBackground(mTouchDrawable);
+            mLinearLayout.setBackground(mTouchDrawable);
+        }
+        if (mOpenHeaveBg){
+            //如果有开启凸起背景
+            mLinearLayout.setBackground(mHeaveDrawable);
         }
 
         addView(view);
@@ -212,3 +238,4 @@ public class BottomBarItem extends LinearLayout {
         mTvNotify.setVisibility(GONE);
     }
 }
+
