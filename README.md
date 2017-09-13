@@ -29,6 +29,16 @@
         <attr name="openTouchBg" format="boolean"/>
         <!--设置触摸背景-->
         <attr name="touchDrawable" format="reference"/>
+	    <!--是否是凸起项-->
+        <attr name="isHeave" format="boolean"/>
+        <!--是否开启凸起背景效果-->
+        <attr name="openHeaveBg" format="boolean"/>
+        <!--设置凸起背景-->
+        <attr name="heaveDrawable" format="reference"/>
+        <!--设置凸起的宽度-->
+        <attr name="heaveWidth" format="dimension"/>
+        <!--设置凸起的高度-->
+        <attr name="heaveHeight" format="dimension"/>
         <!--设置图标的宽度-->
         <attr name="iconWidth" format="dimension"/>
         <!--设置图标的高度-->
@@ -44,15 +54,20 @@
 
 在xml文件中，配置BottomBarLayout，包裹子条目BottomBarItem
     
-    <?xml version="1.0" encoding="utf-8"?>
-	<LinearLayout
-	    xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:app="http://schemas.android.com/apk/res-auto"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:orientation="vertical"
-    >
-
+   <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipChildren="false">
+<!--
+android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束，
+即可大过父布局，父亲以及父亲的父亲都必须申明才可以，
+第二个BottomBarItem的android:layout_gravity="bottom"
+表示当高度超过父布局时，底部对齐，于是就达到上图的效果。
+-->
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
@@ -67,8 +82,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_gravity="center"
-        android:background="@color/tab_gb"
-        >
+        android:clipChildren="false">
 
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
@@ -81,21 +95,30 @@
             app:textColorSelected="@color/tab_selected_color"
             app:itemTextSize="8sp"
             app:itemMarginTop="-5dp"
-            />
-
+            app:openTouchBg="true"
+            app:touchDrawable="@drawable/selector_bg"
+            android:background="@color/tab_gb"/>
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"
+            android:layout_height="90dp"
             app:iconNormal="@mipmap/tab_video_normal"
             app:iconSelected="@mipmap/tab_video_selected"
+            app:iconWidth="60dp"
+            app:iconHeight="60dp"
+            app:heaveWidth="70dp"
+            app:heaveHeight="70dp"
             app:itemText="视频"
             app:textColorNormal="@color/tab_normal_color"
             app:textColorSelected="@color/tab_selected_color"
             app:itemTextSize="8sp"
             app:itemMarginTop="-5dp"
-            />
-
+            app:openTouchBg="true"
+            app:touchDrawable="@drawable/selector_bg"
+            app:openHeaveBg="true"
+            app:isHeave="true"
+            app:heaveDrawable="@drawable/round_bg_orange"
+            android:layout_gravity="bottom" />
 
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
@@ -108,7 +131,9 @@
             app:textColorSelected="@color/tab_selected_color"
             app:itemTextSize="8sp"
             app:itemMarginTop="-5dp"
-            />
+            app:openTouchBg="true"
+            app:touchDrawable="@drawable/selector_bg"
+            android:background="@color/tab_gb"/>
 
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
@@ -121,11 +146,13 @@
             app:textColorSelected="@color/tab_selected_color"
             app:itemTextSize="8sp"
             app:itemMarginTop="-5dp"
-            />
+            app:openTouchBg="true"
+            app:touchDrawable="@drawable/selector_bg"
+            android:background="@color/tab_gb"/>
 
-      </com.chaychan.library.BottomBarLayout>
+    </com.chaychan.library.BottomBarLayout>
 
-	</LinearLayout>
+</LinearLayout>
 
 
 #### java文件中设置
