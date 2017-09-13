@@ -59,7 +59,6 @@ android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束�
 第二个BottomBarItem的android:layout_gravity="bottom"
 表示当高度超过父布局时，底部对齐，于是就达到上图的效果。
     
-   <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -151,7 +150,6 @@ android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束�
             android:background="@color/tab_gb"/>
 
     </com.chaychan.library.BottomBarLayout>
-
 </LinearLayout>
 
 
