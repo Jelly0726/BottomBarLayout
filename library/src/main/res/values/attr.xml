@@ -19,6 +19,16 @@
         <attr name="openTouchBg" format="boolean"/>
         <!--设置触摸背景-->
         <attr name="touchDrawable" format="reference"/>
+        <!--是否是中间凸起项-->
+        <attr name="isHeave" format="boolean"/>
+        <!--是否开启中间凸起背景效果-->
+        <attr name="openHeaveBg" format="boolean"/>
+        <!--设置中间凸起背景-->
+        <attr name="heaveDrawable" format="reference"/>
+        <!--设置中间凸起的宽度-->
+        <attr name="heaveWidth" format="dimension"/>
+        <!--设置中间凸起的高度-->
+        <attr name="heaveHeight" format="dimension"/>
         <!--设置图标的宽度-->
         <attr name="iconWidth" format="dimension"/>
         <!--设置图标的高度-->
