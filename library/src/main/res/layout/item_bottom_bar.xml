@@ -65,7 +65,6 @@
 
         </FrameLayout>
 
-
         <TextView
             android:id="@+id/tv_text"
             android:layout_width="wrap_content"
