@@ -59,21 +59,19 @@ android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束�
 第二个BottomBarItem的android:layout_gravity="bottom"
 表示当高度超过父布局时，底部对齐，于是就达到上图的效果。
     
-<LinearLayout
+    <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:clipChildren="false">
-    
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         ></android.support.v4.view.ViewPager>
-
     <com.chaychan.library.BottomBarLayout
         android:id="@+id/bbl"
         android:layout_width="match_parent"
@@ -82,7 +80,6 @@ android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束�
         android:gravity="center"
         android:layout_gravity="center"
         android:clipChildren="false">
-
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -118,7 +115,6 @@ android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束�
             app:isHeave="true"
             app:heaveDrawable="@drawable/round_bg_orange"
             android:layout_gravity="bottom" />
-
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -133,7 +129,6 @@ android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束�
             app:openTouchBg="true"
             app:touchDrawable="@drawable/selector_bg"
             android:background="@color/tab_gb"/>
-
         <com.chaychan.library.BottomBarItem
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -148,9 +143,8 @@ android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束�
             app:openTouchBg="true"
             app:touchDrawable="@drawable/selector_bg"
             android:background="@color/tab_gb"/>
-
-    </com.chaychan.library.BottomBarLayout>
-</LinearLayout>
+       </com.chaychan.library.BottomBarLayout>
+     </LinearLayout>
 
 
 #### java文件中设置
