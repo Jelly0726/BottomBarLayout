@@ -62,6 +62,7 @@ android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束�
             app:openHeaveBg="true"
             app:isHeave="true"
             app:heaveDrawable="@drawable/round_bg_orange"
+            app:heaveGravity="top"
             android:layout_gravity="bottom" />
 
         <com.chaychan.library.BottomBarItem
