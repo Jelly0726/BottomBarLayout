@@ -29,6 +29,12 @@
         <attr name="heaveWidth" format="dimension"/>
         <!--设置凸起的高度-->
         <attr name="heaveHeight" format="dimension"/>
+         <!--设置凸起的对齐-->
+        <attr name="heaveGravity">
+            <enum name="top" value="0" />
+            <enum name="center" value="1" />
+            <enum name="bottom" value="2" />
+        </attr>
         <!--设置图标的宽度-->
         <attr name="iconWidth" format="dimension"/>
         <!--设置图标的高度-->
