@@ -37,6 +37,7 @@ public class BottomBarItem extends LinearLayout {
     private Drawable mHeaveDrawable;//凸起的背景
     private int mHeaveWidth;//凸起的宽度
     private int mHeaveHeight;//凸起的高度
+    private int mHeaveGravity=1;//凸起的对齐
     private int mIconWidth;//图标的宽度
     private int mIconHeight;//图标的高度
     private int mItemPadding;//BottomBarItem的padding
@@ -87,7 +88,8 @@ public class BottomBarItem extends LinearLayout {
         mHeaveDrawable = ta.getDrawable(R.styleable.BottomBarItem_heaveDrawable);
         mHeaveWidth = ta.getDimensionPixelSize(R.styleable.BottomBarItem_heaveWidth, 0);
         mHeaveHeight = ta.getDimensionPixelSize(R.styleable.BottomBarItem_heaveHeight, 0);
-
+        mHeaveGravity = ta.getInt(R.styleable.BottomBarItem_heaveGravity,mHeaveGravity);
+        
         mIconWidth = ta.getDimensionPixelSize(R.styleable.BottomBarItem_iconWidth, 0);
         mIconHeight = ta.getDimensionPixelSize(R.styleable.BottomBarItem_iconHeight, 0);
         mItemPadding = ta.getDimensionPixelSize(R.styleable.BottomBarItem_itemPadding, 0);
@@ -134,7 +136,12 @@ public class BottomBarItem extends LinearLayout {
             LayoutParams imageLayoutParams = (LayoutParams) mLinearLayout.getLayoutParams();
             imageLayoutParams.width = mHeaveWidth;
             imageLayoutParams.height = mHeaveHeight;
-            setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);
+             if(mHeaveGravity==0){
+                setGravity(Gravity.CENTER_HORIZONTAL|Gravity.TOP);
+            }
+            if(mHeaveGravity==2){
+                setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);
+            }
             mLinearLayout.setLayoutParams(imageLayoutParams);
         }
         mImageView = (ImageView) view.findViewById(R.id.iv_icon);
