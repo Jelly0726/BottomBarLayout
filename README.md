@@ -39,6 +39,12 @@
         <attr name="heaveWidth" format="dimension"/>
         <!--设置凸起的高度-->
         <attr name="heaveHeight" format="dimension"/>
+	 <!--设置凸起的对齐-->
+        <attr name="heaveGravity">
+            <enum name="top" value="0" />
+            <enum name="center" value="1" />
+            <enum name="bottom" value="2" />
+        </attr>
         <!--设置图标的宽度-->
         <attr name="iconWidth" format="dimension"/>
         <!--设置图标的高度-->
@@ -113,6 +119,7 @@ android:clipChildren="false"的意思是孩子的宽高不必受父亲的约束�
             app:touchDrawable="@drawable/selector_bg"
             app:openHeaveBg="true"
             app:isHeave="true"
+	    app:heaveGravity="top"
             app:heaveDrawable="@drawable/round_bg_orange"
             android:layout_gravity="bottom" />
         <com.chaychan.library.BottomBarItem
