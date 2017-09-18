@@ -183,7 +183,16 @@ public class BottomBarItem extends LinearLayout {
 
         addView(view);
     }
-
+  @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if(mIsHeave){
+            LayoutParams layoutParams= (LayoutParams) getLayoutParams();
+            //layoutParams.height=300;
+            layoutParams.height=getWidth();
+            setLayoutParams(layoutParams);
+        }
+    }
     public ImageView getImageView() {
         return mImageView;
     }
