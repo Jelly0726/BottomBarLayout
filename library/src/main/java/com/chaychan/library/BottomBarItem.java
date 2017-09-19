@@ -189,7 +189,11 @@ public class BottomBarItem extends LinearLayout {
         if(mIsHeave){//使凸起的高度和宽度相等
             LayoutParams layoutParams= (LayoutParams) getLayoutParams();
             //layoutParams.height=300;
-            layoutParams.height=getMeasuredWidth();
+            if(getWidth()>0){
+                layoutParams.height=getWidth();
+            }else {
+                layoutParams.height=getMeasuredWidth();
+            }
             setLayoutParams(layoutParams);
         }
     }
