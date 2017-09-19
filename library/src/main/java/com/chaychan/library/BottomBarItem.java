@@ -186,10 +186,10 @@ public class BottomBarItem extends LinearLayout {
   @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if(mIsHeave && getLayoutParams().height==0){//使凸起的高度和宽度相等
+        if(mIsHeave){//使凸起的高度和宽度相等
             LayoutParams layoutParams= (LayoutParams) getLayoutParams();
             //layoutParams.height=300;
-            layoutParams.height=getWidth();
+            layoutParams.height=getMeasuredWidth();
             setLayoutParams(layoutParams);
         }
     }
