@@ -86,10 +86,21 @@ public class BottomBarLayout extends LinearLayout implements ViewPager.OnPageCha
 
     @Override
     public void onPageSelected(int position) {
-        mCurrentItem = position;//记录当前位置
-        resetState();
-        mItemViews.get(position).setStatus(true);
-        mViewPager.setCurrentItem(position, mSmoothScroll);
+         if(!mItemViews.get(position).getIsHeave()) {//判断是否为凸起，若为凸起则跳过
+            mCurrentItem = position;//记录当前位置
+            resetState();
+            mItemViews.get(position).setStatus(true);
+            mViewPager.setCurrentItem(position, mSmoothScroll);
+        }else {
+            if(mCurrentItem<position){
+                mCurrentItem = position+1;//记录当前位置
+            }else {
+                mCurrentItem = position-1;//记录当前位置
+            }
+            resetState();
+            mItemViews.get(mCurrentItem).setStatus(true);
+            mViewPager.setCurrentItem(mCurrentItem, mSmoothScroll);
+        }
     }
 
     @Override
